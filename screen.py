@@ -1,18 +1,25 @@
 import tkinter as tk
 import pygame as game
+import subprocess
+
 root = tk.Tk()
 
 class Screen:
     windowedConstant = 80
-    Default_W = root.winfo_screenmmwidth()
-    Default_H = root.winfo_screenmmheight()
+
+    
+    output = subprocess.Popen('xrandr | grep "\*" | cut -d" " -f4',shell=True, stdout=subprocess.PIPE).communicate()[0]
+    resolution = output.split()[0].split(b'x')
+    
+    WIDTH = int(resolution[0].decode('UTF-8'))
+    HEIGHT = int(resolution[1].decode('UTF-8'))
 
     screenMenu = True
     settingsMenu = False
     
-    windowed_W = Default_W - windowedConstant
-    windowed_H = Default_H - windowedConstant
-    WIN = game.display.set_mode((1600,900),game.RESIZABLE)
+    windowed_W = WIDTH - windowedConstant
+    windowed_H = HEIGHT - windowedConstant
+    WIN = game.display.set_mode((windowed_W,windowed_H),game.RESIZABLE)
     
     def appliedResolution(mode):
         if mode == "Windowed":
