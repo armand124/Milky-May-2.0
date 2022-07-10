@@ -14,6 +14,7 @@ class Button():
        if State.mouseDown == True:
         if self.rect.collidepoint(picture.mouse.get_pos()):
                 State.mouseDown = False
+                State.collideWithObject = True
                 return True
             
     def buttonOnCursor(self):
@@ -29,6 +30,29 @@ class Button():
         else:
          Screen.WIN.blit(self.imageUnpressed,(self.rect.x,self.rect.y))
     
+
+class SlideButton():
+    def __init__(self , x , y , imagePressed,imageUnpressed,volume):
+        self.imagePressed = imagePressed
+        self.imageUnpressed = imageUnpressed
+        self.__volume = volume
+        self.rect = self.imageUnpressed.get_rect()
+        self.rect.topleft = (x,y)
+
+    def buttonPressed(self):
+       if State.mouseDown == True:
+        if self.rect.collidepoint(picture.mouse.get_pos()):
+                State.mouseDown = False
+                State.collideWithObject = True
+                return True
+    
+    def showButton(self):
+        if Button.buttonPressed(self):
+            State.currentVolume = self.__volume
+        elif (Button.buttonOnCursor(self) or State.currentVolume >= self.__volume) and self.__volume != 0:
+         Screen.WIN.blit(self.imagePressed , (self.rect.x , self.rect.y))
+        elif self.__volume !=0 and State.currentVolume < self.__volume:
+         Screen.WIN.blit(self.imageUnpressed,(self.rect.x,self.rect.y))
 
 class MenuButtons:
     
