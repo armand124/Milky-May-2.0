@@ -22,7 +22,7 @@ def main():
                 user.Save()
                 screen.settingsMenu = False
                 screen.screenMenu = True
-            if game.mouse.get_pressed()[0]:
+            if event.type == game.MOUSEBUTTONDOWN:
               State.mouseDown = True
       if screen.screenMenu is True:
         Menu.runMenuScreen()

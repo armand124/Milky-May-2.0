@@ -9,15 +9,9 @@ class Screen:
     screenMenu = True
     settingsMenu = False
     
-    WIN = game.display.set_mode((State.currentWidth,State.currentHeight),game.RESIZABLE)
-
-    def appliedResolution(mode):
-        if mode == "Windowed":
-            resultingScreen = (Screen.windowed_W,Screen.windowed_H)
-            return resultingScreen
-        if mode == "FullScreen":
-            resultingScreen = (Screen.Default_W,Screen.Default_H)
-            return resultingScreen
-
-
+    WIN = game.display.set_mode((State.currentWidth,State.currentHeight))
+    if State.fullscreen:
+        WIN = game.display.set_mode((State.currentWidth,State.currentHeight),game.FULLSCREEN)
+    else:
+        WIN = game.display.set_mode((State.currentWidth,State.currentHeight))
 

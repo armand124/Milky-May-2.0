@@ -1,10 +1,11 @@
 import pygame as picture
+from Paths import *
+import os
 
 class GUI:
- def arraging_text(surface, text, pos, font, color=picture.Color('black')):
+ def arraging_text(max_width,surface, text, pos, font, color=picture.Color('black')):
     words = [word.split(' ') for word in text.splitlines()] 
     space = font.size(' ')[0]  
-    max_width, max_height = surface.get_size()
     x, y = pos
     for line in words:
         for word in line:

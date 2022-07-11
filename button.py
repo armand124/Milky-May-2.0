@@ -47,13 +47,38 @@ class SlideButton():
                 return True
     
     def showButton(self):
+        
         if Button.buttonPressed(self):
             State.currentVolume = self.__volume
         if (Button.buttonOnCursor(self) or State.currentVolume >= self.__volume) and self.__volume != 0:
          Screen.WIN.blit(self.imagePressed , (self.rect.x , self.rect.y))
         elif self.__volume !=0 and State.currentVolume < self.__volume:
          Screen.WIN.blit(self.imageUnpressed,(self.rect.x,self.rect.y))
+ 
+class FullscreenButton():
+   def __init__(self , x , y , imagePressed,imageUnpressed):
+        self.imagePressed = imagePressed
+        self.imageUnpressed = imageUnpressed
+        self.rect = self.imageUnpressed.get_rect()
+        self.rect.topleft = (x,y)
 
+   def buttonPressed(self):
+       if State.mouseDown == True:
+        if self.rect.collidepoint(picture.mouse.get_pos()):
+                State.mouseDown = False
+                State.collideWithObject = True
+                return True
+    
+   def showButton(self):    
+        if Button.buttonPressed(self):
+            State.fullscreen = not State.fullscreen
+            picture.display.toggle_fullscreen()
+            State.mouseDown = False
+        if State.fullscreen is True:
+         Screen.WIN.blit(self.imagePressed , (self.rect.x , self.rect.y))
+        else:
+         Screen.WIN.blit(self.imageUnpressed,(self.rect.x,self.rect.y))
+ 
 class MenuButtons:
     
     ButtonDifference_Y = 150
