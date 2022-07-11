@@ -49,7 +49,7 @@ class SlideButton():
     def showButton(self):
         if Button.buttonPressed(self):
             State.currentVolume = self.__volume
-        elif (Button.buttonOnCursor(self) or State.currentVolume >= self.__volume) and self.__volume != 0:
+        if (Button.buttonOnCursor(self) or State.currentVolume >= self.__volume) and self.__volume != 0:
          Screen.WIN.blit(self.imagePressed , (self.rect.x , self.rect.y))
         elif self.__volume !=0 and State.currentVolume < self.__volume:
          Screen.WIN.blit(self.imageUnpressed,(self.rect.x,self.rect.y))
@@ -57,12 +57,12 @@ class SlideButton():
 class MenuButtons:
     
     ButtonDifference_Y = 150
-    
+    ButtonConstant_X = State.currentWidth/2 - 120
     #-----------------------------------------Quit Button Declaration-----------------------------------------
     quit_P = picture.image.load(os.path.join(Path.starting_Screen_Assets,'closePressed.png')).convert_alpha()
     quit_Un = picture.image.load(os.path.join(Path.starting_Screen_Assets,'closeUnpressed.png')).convert_alpha()
     
-    __quitButton = Button(680,650,quit_P,quit_Un)
+    __quitButton = Button(ButtonConstant_X,650,quit_P,quit_Un)
     
     @staticmethod
     def quitButton():
@@ -77,7 +77,7 @@ class MenuButtons:
     settings_P = picture.image.load(os.path.join(Path.starting_Screen_Assets,'settingsPressed.png')).convert_alpha()
     settings_Un = picture.image.load(os.path.join(Path.starting_Screen_Assets,'settingsUnpressed.png')).convert_alpha()
     
-    __settingsButton = Button(680,650-ButtonDifference_Y,settings_P,settings_Un)
+    __settingsButton = Button(ButtonConstant_X,650-ButtonDifference_Y,settings_P,settings_Un)
     
     @staticmethod
     def settingsButton():

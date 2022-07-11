@@ -1,6 +1,6 @@
 import pygame as picture
 
-class gui:
+class GUI:
  def arraging_text(surface, text, pos, font, color=picture.Color('black')):
     words = [word.split(' ') for word in text.splitlines()] 
     space = font.size(' ')[0]  
