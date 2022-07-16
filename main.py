@@ -1,7 +1,7 @@
 import pygame as game
 from screen import Screen as screen
 from menu import Menu
-from user import State
+from user import *
 import user
 import sys
 from settings import Settings

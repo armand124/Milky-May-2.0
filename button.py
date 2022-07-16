@@ -1,15 +1,15 @@
 import pygame as picture
-from user import State
+from user import *
 from screen import Screen
 from Paths import Path
 import os
+         
 class Button():
     def __init__(self , x , y , imagePressed,imageUnpressed):
-        self.imagePressed = imagePressed
-        self.imageUnpressed = imageUnpressed
+        self.imagePressed = picture.transform.scale(imagePressed,(Screen.resizeMaterial_Width(State.currentWidth,imagePressed.get_width()),Screen.resizeMaterial_Height(State.currentHeight,imagePressed.get_height())))
+        self.imageUnpressed = picture.transform.scale(imageUnpressed,(Screen.resizeMaterial_Width(State.currentWidth,imageUnpressed.get_width()),Screen.resizeMaterial_Height(State.currentHeight,imageUnpressed.get_height())))
         self.rect = self.imageUnpressed.get_rect()
         self.rect.topleft = (x,y)
-
     def buttonPressed(self):
        if State.mouseDown == True:
         if self.rect.collidepoint(picture.mouse.get_pos()):
@@ -23,6 +23,7 @@ class Button():
     
     
     def showButton(self):
+        
         if Button.buttonOnCursor(self):
          Screen.WIN.blit(self.imagePressed , (self.rect.x-5 , self.rect.y-5))
         elif Button.buttonPressed(self):
@@ -33,8 +34,8 @@ class Button():
 
 class SlideButton():
     def __init__(self , x , y , imagePressed,imageUnpressed,volume):
-        self.imagePressed = imagePressed
-        self.imageUnpressed = imageUnpressed
+        self.imagePressed = picture.transform.scale(imagePressed,(Screen.resizeMaterial_Width(State.currentWidth,imagePressed.get_width()),Screen.resizeMaterial_Height(State.currentHeight,imagePressed.get_height())))
+        self.imageUnpressed = picture.transform.scale(imageUnpressed,(Screen.resizeMaterial_Width(State.currentWidth,imageUnpressed.get_width()),Screen.resizeMaterial_Height(State.currentHeight,imageUnpressed.get_height())))
         self.__volume = volume
         self.rect = self.imageUnpressed.get_rect()
         self.rect.topleft = (x,y)
@@ -57,8 +58,8 @@ class SlideButton():
  
 class FullscreenButton():
    def __init__(self , x , y , imagePressed,imageUnpressed):
-        self.imagePressed = imagePressed
-        self.imageUnpressed = imageUnpressed
+        self.imagePressed = picture.transform.scale(imagePressed,(Screen.resizeMaterial_Width(State.currentWidth,imagePressed.get_width()),Screen.resizeMaterial_Height(State.currentHeight,imagePressed.get_height())))
+        self.imageUnpressed = picture.transform.scale(imageUnpressed,(Screen.resizeMaterial_Width(State.currentWidth,imageUnpressed.get_width()),Screen.resizeMaterial_Height(State.currentHeight,imageUnpressed.get_height())))
         self.rect = self.imageUnpressed.get_rect()
         self.rect.topleft = (x,y)
 
@@ -81,13 +82,12 @@ class FullscreenButton():
  
 class MenuButtons:
     
-    ButtonDifference_Y = 150
-    ButtonConstant_X = State.currentWidth/2 - 120
+    ButtonDifference_Y = Screen.resizeMaterial_Height(State.currentHeight,150)
+    ButtonConstant_X = State.currentWidth/2 - Screen.resizeMaterial_Width(State.currentWidth,120)
     #-----------------------------------------Quit Button Declaration-----------------------------------------
     quit_P = picture.image.load(os.path.join(Path.starting_Screen_Assets,'closePressed.png')).convert_alpha()
     quit_Un = picture.image.load(os.path.join(Path.starting_Screen_Assets,'closeUnpressed.png')).convert_alpha()
-    
-    __quitButton = Button(ButtonConstant_X,650,quit_P,quit_Un)
+    __quitButton = Button(ButtonConstant_X,Screen.resizeMaterial_Height(State.currentHeight,780),quit_P,quit_Un)
     
     @staticmethod
     def quitButton():
@@ -101,8 +101,8 @@ class MenuButtons:
     #-----------------------------------------Settings Button Declaration-----------------------------------------
     settings_P = picture.image.load(os.path.join(Path.starting_Screen_Assets,'settingsPressed.png')).convert_alpha()
     settings_Un = picture.image.load(os.path.join(Path.starting_Screen_Assets,'settingsUnpressed.png')).convert_alpha()
-    
-    __settingsButton = Button(ButtonConstant_X,650-ButtonDifference_Y,settings_P,settings_Un)
+
+    __settingsButton = Button(ButtonConstant_X,Screen.resizeMaterial_Height(State.currentHeight,780)-ButtonDifference_Y,settings_P,settings_Un)
     
     @staticmethod
     def settingsButton():
@@ -113,6 +113,5 @@ class MenuButtons:
     
     #---------------------------------------------------------------------------------------------------------------
     
-    
-        
+
         
