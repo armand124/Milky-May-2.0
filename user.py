@@ -6,7 +6,6 @@ import pygame as picture
 class State:
     sessionStarted = True
     mouseDown = False
-    allPictures = []
     collideWithObject = False
     f = open(os.path.join(Path.settings_Screen_Assets,'settings.json'),'r')
     fileReader = f.read()

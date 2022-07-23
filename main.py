@@ -5,6 +5,7 @@ from user import *
 import user
 from idle import *
 import sys
+import gravityTest
 from settings import Settings
 game.init()
 
@@ -14,23 +15,23 @@ game.display.set_caption("Milky May")
 def main():
     clock = game.time.Clock()
     while State.sessionStarted:
-      for event in game.event.get():
-            if event.type == game.QUIT or State.sessionStarted == False:
-                 sys.exit()
-            if event.type == game.KEYDOWN:
-              if event.key == game.K_ESCAPE:
-               if screen.settingsMenu is True:
-                user.Save()
-                screen.settingsMenu = False
-                screen.screenMenu = True
-            if event.type == game.MOUSEBUTTONDOWN: 
-              State.mouseDown = True
+
+      #Main Menu
       if screen.screenMenu is True:
+        Menu.basicEvent()
         Menu.runMenuScreen()
+      
+      #Settings Menu
       if screen.settingsMenu is True:
         Settings.updateSettingScreen()
+      
+      #Gravity Game 
       if screen.idleMenu is True:
-        Idle.idleScreen()
+        #gravityTest.Player.player_Movement()
+        gravityTest.basicEvent()
+        gravityTest.updateGame()
+
+      
       if State.mouseDown == True:
         State.mouseDown = False
       clock.tick(60) 
