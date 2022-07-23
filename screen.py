@@ -9,7 +9,7 @@ class Screen:
     windowedConstant = 80
     screenMenu = True
     settingsMenu = False
-    
+    idleMenu = False
     WIN = game.display.set_mode((State.currentWidth,State.currentHeight))
     if State.fullscreen:
         WIN = game.display.set_mode((State.currentWidth,State.currentHeight),game.FULLSCREEN)
@@ -21,6 +21,4 @@ class Screen:
     
     def resizeMaterial_Height(desiredResolution,default1080Res):
         return (default1080Res * desiredResolution / 1080)
-    
-    def modifyPicture(img):
-        img = game.transform.scale(img,(Screen.resizeMaterial_Width(State.currentWidth,img.get_width()),Screen.resizeMaterial_Height(State.currentHeight,img.get_height())))
+

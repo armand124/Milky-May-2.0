@@ -22,15 +22,17 @@ class Sound:
     volume_icon_2 = picture.image.load(os.path.join(Path.settings_Screen_Assets,'volume-1.png')).convert_alpha()
     volume_icon_3 = picture.image.load(os.path.join(Path.settings_Screen_Assets,'volume-2.png')).convert_alpha()
     
-    Screen.modifyPicture(volume_icon_1)
-    Screen.modifyPicture(volume_icon_2)
-    Screen.modifyPicture(volume_icon_3)
-    Screen.modifyPicture(volume_icon_mute)
+    volume_icon_mute = picture.transform.scale(volume_icon_mute,(Screen.resizeMaterial_Width(State.currentWidth,volume_icon_mute.get_width()),Screen.resizeMaterial_Height(State.currentHeight,volume_icon_mute.get_height())))
+    volume_icon_1 = picture.transform.scale(volume_icon_1,(Screen.resizeMaterial_Width(State.currentWidth,volume_icon_1.get_width()),Screen.resizeMaterial_Height(State.currentHeight,volume_icon_1.get_height())))
+    volume_icon_2 = picture.transform.scale(volume_icon_2,(Screen.resizeMaterial_Width(State.currentWidth,volume_icon_2.get_width()),Screen.resizeMaterial_Height(State.currentHeight,volume_icon_2.get_height())))
+    volume_icon_3 = picture.transform.scale(volume_icon_3,(Screen.resizeMaterial_Width(State.currentWidth,volume_icon_3.get_width()),Screen.resizeMaterial_Height(State.currentHeight,volume_icon_3.get_height())))
+    
     
     for i in range(0,10):
         button = SlideButton(slider_X_POS+i*buttonDifference,slider_Y_POS,volume_bar_P,volume_bar_unP,i)
         volumeBar.append(button)
         
+    
     def handleVolumeIcon():
         if State.currentVolume==0:
             Screen.WIN.blit(Sound.volume_icon_mute,(Sound.slider_X_POS-Screen.resizeMaterial_Width(State.currentWidth,90),Sound.slider_Y_POS-Screen.resizeMaterial_Height(State.currentHeight,5)))
@@ -70,8 +72,8 @@ class Settings:
     background = picture.image.load(os.path.join(Path.starting_Screen_Assets,'background.png')).convert_alpha()
     title = picture.image.load(os.path.join(Path.settings_Screen_Assets,'settingsText.png')).convert_alpha()
     background = picture.transform.scale(background, (State.currentWidth,State.currentHeight))
-    #title = picture.transform.scale(title,(Screen.resizeMaterial_Width(State.currentWidth,title.get_width()),Screen.resizeMaterial_Height(State.currentHeight,title.get_height())))
-    Screen.modifyPicture(title)
+    title = picture.transform.scale(title,(Screen.resizeMaterial_Width(State.currentWidth,title.get_width()),Screen.resizeMaterial_Height(State.currentHeight,title.get_height())))
+    
     @staticmethod
     def updateSettingScreen():
         Screen.WIN.blit(Settings.background,(0,0))

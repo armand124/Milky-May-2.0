@@ -84,7 +84,10 @@ class MenuButtons:
     
     ButtonDifference_Y = Screen.resizeMaterial_Height(State.currentHeight,150)
     ButtonConstant_X = State.currentWidth/2 - Screen.resizeMaterial_Width(State.currentWidth,120)
+    
+    
     #-----------------------------------------Quit Button Declaration-----------------------------------------
+
     quit_P = picture.image.load(os.path.join(Path.starting_Screen_Assets,'closePressed.png')).convert_alpha()
     quit_Un = picture.image.load(os.path.join(Path.starting_Screen_Assets,'closeUnpressed.png')).convert_alpha()
     __quitButton = Button(ButtonConstant_X,Screen.resizeMaterial_Height(State.currentHeight,780),quit_P,quit_Un)
@@ -99,6 +102,7 @@ class MenuButtons:
     
     
     #-----------------------------------------Settings Button Declaration-----------------------------------------
+
     settings_P = picture.image.load(os.path.join(Path.starting_Screen_Assets,'settingsPressed.png')).convert_alpha()
     settings_Un = picture.image.load(os.path.join(Path.starting_Screen_Assets,'settingsUnpressed.png')).convert_alpha()
 
@@ -113,5 +117,22 @@ class MenuButtons:
     
     #---------------------------------------------------------------------------------------------------------------
     
+    
+    #-----------------------------------------New Game Button Declaration-----------------------------------------
 
-        
+    newGame_P = picture.image.load(os.path.join(Path.starting_Screen_Assets,'settingsPressed.png')).convert_alpha()
+    newGame_Un = picture.image.load(os.path.join(Path.starting_Screen_Assets,'settingsUnpressed.png')).convert_alpha()
+
+    __newGameButton = Button(ButtonConstant_X,Screen.resizeMaterial_Height(State.currentHeight,780)- 2*ButtonDifference_Y,newGame_P,newGame_Un)
+
+    @staticmethod
+    def newGameButton():
+        if MenuButtons.__newGameButton.buttonPressed():
+            Screen.screenMenu = False
+            Screen.idleMenu = True
+        MenuButtons.__newGameButton.showButton()
+
+    #---------------------------------------------------------------------------------------------------------------            
+
+    
+   

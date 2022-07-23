@@ -3,11 +3,12 @@ from screen import Screen as screen
 from menu import Menu
 from user import *
 import user
+from idle import *
 import sys
 from settings import Settings
 game.init()
 
-game.display.set_caption("Milky May 2")
+game.display.set_caption("Milky May")
 
 @staticmethod
 def main():
@@ -22,12 +23,14 @@ def main():
                 user.Save()
                 screen.settingsMenu = False
                 screen.screenMenu = True
-            if event.type == game.MOUSEBUTTONDOWN:
+            if event.type == game.MOUSEBUTTONDOWN: 
               State.mouseDown = True
       if screen.screenMenu is True:
         Menu.runMenuScreen()
       if screen.settingsMenu is True:
         Settings.updateSettingScreen()
+      if screen.idleMenu is True:
+        Idle.idleScreen()
       if State.mouseDown == True:
         State.mouseDown = False
       clock.tick(60) 
