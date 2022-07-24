@@ -9,12 +9,12 @@ import gravityTest
 from settings import Settings
 game.init()
 
-game.display.set_caption("Milky May")
 
 @staticmethod
 def main():
     clock = game.time.Clock()
     while State.sessionStarted:
+      print(gravityTest.Player.current_X)
       #Main Menu
       if screen.screenMenu is True:
         Menu.basicEvent()
@@ -31,7 +31,6 @@ def main():
         gravityTest.basicEvents()
         gravityTest.updateGame()
 
-      
       if State.mouseDown == True:
         State.mouseDown = False
       clock.tick()

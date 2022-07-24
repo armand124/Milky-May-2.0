@@ -23,24 +23,23 @@ class Player:
  right_key = False
  left_key = False
  movementConstant = 10
- currentSpeed = 0
+ currentSpeed = 1
  
 
  #Updating velocity depending of the current fps
  @staticmethod
  def modifyVelocity():
-     difference = -((State.current_FPS - 60) * 0.166)
-     Player.currentSpeed = Player.movementConstant + difference
+     Player.currentSpeed = (60/State.current_FPS) * Player.movementConstant
 
  @staticmethod
  def movePlayer():
-    if Player.up_key:
+    if Player.up_key and Player.current_Y - Player.currentSpeed >= 0:
        Player.current_Y -= Player.currentSpeed
-    if Player.down_key:
+    if Player.down_key and Player.current_Y + Player.currentSpeed <= State.currentHeight:
        Player.current_Y += Player.currentSpeed
-    if Player.right_key:
+    if Player.right_key and Player.current_X + Player.currentSpeed <= State.currentWidth:
        Player.current_X += Player.currentSpeed
-    if Player.left_key:
+    if Player.left_key and Player.current_X - Player.currentSpeed >=0:
        Player.current_X -= Player.currentSpeed
 @staticmethod
 def basicEvents():
