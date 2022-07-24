@@ -15,7 +15,6 @@ game.display.set_caption("Milky May")
 def main():
     clock = game.time.Clock()
     while State.sessionStarted:
-
       #Main Menu
       if screen.screenMenu is True:
         Menu.basicEvent()
@@ -28,13 +27,15 @@ def main():
       
       #Gravity Game 
       if screen.idleMenu is True:
+        gravityTest.Player.modifyVelocity()
         gravityTest.basicEvents()
         gravityTest.updateGame()
 
       
       if State.mouseDown == True:
         State.mouseDown = False
-      clock.tick(60) 
+      clock.tick()
+      State.current_FPS = clock.get_fps() 
     game.quit()
 
 main()

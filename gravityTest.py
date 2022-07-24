@@ -1,15 +1,17 @@
+from turtle import back
 import pygame as game
+from gui import GUI
 from user import *
 from screen import *
 from Paths import Path
 import sys
+from gui import *
 #Game background
 background = game.image.load(os.path.join(Path.gravity_game,'background.png')).convert_alpha()
 background = game.transform.scale(background,(State.currentWidth,State.currentHeight))
 
 character = game.image.load(os.path.join(Path.gravity_game , 'ship.png')).convert_alpha()
-character = game.transform.scale(character,(Screen.resizeMaterial_Width(State.currentWidth,character.get_width()),
-Screen.resizeMaterial_Height(State.currentHeight,character.get_height())))
+character = game.transform.scale(character,(Screen.resizeMaterial_Width(State.currentWidth,character.get_width()),Screen.resizeMaterial_Height(State.currentHeight,character.get_height())))
 
 class Player:
  #Default player position when game starts
@@ -20,17 +22,26 @@ class Player:
  down_key = False
  right_key = False
  left_key = False
- movementConstant = 5
+ movementConstant = 10
+ currentSpeed = 0
+ 
+
+ #Updating velocity depending of the current fps
+ @staticmethod
+ def modifyVelocity():
+     difference = -((State.current_FPS - 60) * 0.166)
+     Player.currentSpeed = Player.movementConstant + difference
+
  @staticmethod
  def movePlayer():
     if Player.up_key:
-       Player.current_Y -= Player.movementConstant
+       Player.current_Y -= Player.currentSpeed
     if Player.down_key:
-       Player.current_Y += Player.movementConstant
+       Player.current_Y += Player.currentSpeed
     if Player.right_key:
-       Player.current_X += Player.movementConstant
+       Player.current_X += Player.currentSpeed
     if Player.left_key:
-       Player.current_X -= Player.movementConstant
+       Player.current_X -= Player.currentSpeed
 @staticmethod
 def basicEvents():
    for event in game.event.get():
