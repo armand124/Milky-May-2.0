@@ -23,12 +23,12 @@ def main():
       
       #Settings Menu
       if screen.settingsMenu is True:
+        Settings.basicEvents()
         Settings.updateSettingScreen()
       
       #Gravity Game 
       if screen.idleMenu is True:
-        #gravityTest.Player.player_Movement()
-        gravityTest.basicEvent()
+        gravityTest.basicEvents()
         gravityTest.updateGame()
 
       

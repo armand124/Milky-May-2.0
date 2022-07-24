@@ -1,7 +1,7 @@
 from tabnanny import check
 import pygame as picture
 import os
-
+import sys
 from pyparsing import White
 from Paths import Path
 from user import *
@@ -73,6 +73,19 @@ class Settings:
     title = picture.image.load(os.path.join(Path.settings_Screen_Assets,'settingsText.png')).convert_alpha()
     background = picture.transform.scale(background, (State.currentWidth,State.currentHeight))
     title = picture.transform.scale(title,(Screen.resizeMaterial_Width(State.currentWidth,title.get_width()),Screen.resizeMaterial_Height(State.currentHeight,title.get_height())))
+    
+    
+    @staticmethod
+    def basicEvents():
+        for event in picture.event.get():
+            if event.type == picture.QUIT or State.sessionStarted == False:
+                 sys.exit()
+            keys = picture.key.get_pressed()
+            if keys[picture.K_ESCAPE]:
+                Screen.settingsMenu = False
+                Screen.screenMenu = True
+            if event.type == picture.MOUSEBUTTONDOWN: 
+              State.mouseDown = True
     
     @staticmethod
     def updateSettingScreen():
