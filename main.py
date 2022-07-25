@@ -3,6 +3,7 @@ from screen import Screen as screen
 from menu import Menu
 from user import *
 import user
+from presentation import *
 from idle import *
 import sys
 import gravityTest
@@ -34,7 +35,11 @@ def main():
         gravityTest.Player.modifyVelocity()
         gravityTest.basicEvents()
         gravityTest.updateGame()
-        
+
+      if screen.quizMenu is True:
+        Game.basicEvent()
+        Game.updateQuiz()
+
       if State.mouseDown == True:
         State.mouseDown = False
       clock.tick()

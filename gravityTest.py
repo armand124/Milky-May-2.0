@@ -15,8 +15,6 @@ background = game.image.load(os.path.join(Path.gravity_game,'background.png')).c
 background = game.transform.scale(background,(State.currentWidth,State.currentHeight))
 
 
-
-
 #Planets Declarations
 planets = []
 
@@ -45,7 +43,8 @@ mars = game.transform.scale(mars , (Screen.resizeMaterial_Width(State.currentWid
 pausedScreen = game.image.load(os.path.join(Path.gravity_game , 'pauseScreen.png')).convert_alpha()
 pausedSreen = game.transform.scale(pausedScreen,(State.currentWidth,State.currentHeight))
 
-formuleList = game.image.load(os.path.join(Path.gravity_game))
+formuleList = game.image.load(os.path.join(Path.gravity_game,'formuleList.png')).convert_alpha()
+formuleList = game.transform.scale(formuleList , (Screen.resizeMaterial_Width(State.currentWidth,formuleList.get_width()),Screen.resizeMaterial_Height(State.currentHeight,formuleList.get_height())))
 
 class Player:
  #Default player position when game starts
@@ -179,6 +178,7 @@ def updateGame():
      GravityGame_Buttons.exitButton()
   if State.formulaScreen_Level_1 is True:
       Screen.WIN.blit(pausedScreen , (0,0))
+      Screen.WIN.blit(formuleList,(0,0))
   GravityGame_Buttons.formulaButton()
   game.display.update()
    

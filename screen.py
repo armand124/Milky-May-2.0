@@ -10,7 +10,7 @@ class Screen:
     screenMenu = True
     settingsMenu = False
     idleMenu = False
-    quizIdleMenu = False
+    quizMenu = False
     first_game = False 
     
     WIN = game.display.set_mode((State.currentWidth,State.currentHeight))

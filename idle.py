@@ -26,4 +26,5 @@ class Idle:
     def idleScreen():
         Screen.WIN.blit(Idle.background,(0,0))
         Idle_Buttons.gravityButton()
+        Idle_Buttons.solarSystemButton()
         game.display.update()

@@ -203,3 +203,17 @@ class Idle_Buttons:
             Screen.first_game = True
             Screen.idleMenu = False
         Idle_Buttons.__earthIconButton.showButton()
+
+
+    
+    solarSystem_P = picture.image.load(os.path.join(Path.quiz, 'solarSystemPressed.png')).convert_alpha()
+    solarSystem_Un = picture.image.load(os.path.join(Path.quiz , 'solarSystem.png')).convert_alpha()
+
+    __solarSystemIconButton = Button(Screen.resizeMaterial_Width(State.currentWidth,880),Screen.resizeMaterial_Height(State.currentHeight,300),solarSystem_P,solarSystem_Un)
+
+    @staticmethod
+    def solarSystemButton():
+        if Idle_Buttons.__solarSystemIconButton.buttonPressed():
+            Screen.quizMenu = True
+            Screen.idleMenu = False
+        Idle_Buttons.__solarSystemIconButton.showButton()
