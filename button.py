@@ -120,8 +120,8 @@ class MenuButtons:
     
     #-----------------------------------------New Game Button Declaration-----------------------------------------
 
-    newGame_P = picture.image.load(os.path.join(Path.starting_Screen_Assets,'settingsPressed.png')).convert_alpha()
-    newGame_Un = picture.image.load(os.path.join(Path.starting_Screen_Assets,'settingsUnpressed.png')).convert_alpha()
+    newGame_P = picture.image.load(os.path.join(Path.starting_Screen_Assets,'newGamePressed.png')).convert_alpha()
+    newGame_Un = picture.image.load(os.path.join(Path.starting_Screen_Assets,'newGameUnpressed.png')).convert_alpha()
 
     __newGameButton = Button(ButtonConstant_X,Screen.resizeMaterial_Height(State.currentHeight,780)- 2*ButtonDifference_Y,newGame_P,newGame_Un)
 
@@ -134,5 +134,23 @@ class MenuButtons:
 
     #---------------------------------------------------------------------------------------------------------------            
 
+
+
+class GravityGame_Buttons:
     
-   
+     ButtonDifference_Y = Screen.resizeMaterial_Height(State.currentHeight,150)
+     ButtonConstant_X = State.currentWidth/2 - Screen.resizeMaterial_Width(State.currentWidth,120)
+     
+     #-----------------------------------------Continue Button Declaration-----------------------------------------
+     
+     continue_P = picture.image.load(os.path.join(Path.gravity_game,'continuePressed.png')).convert_alpha()
+     continue_Un = picture.image.load(os.path.join(Path.gravity_game,'continueUnpressed.png')).convert_alpha()
+     
+     __continueButton = Button(ButtonConstant_X,Screen.resizeMaterial_Height(State.currentHeight,780)- 2*ButtonDifference_Y,continue_P,continue_Un)
+     
+     @staticmethod
+     def continueButton():
+        if GravityGame_Buttons.__continueButton.buttonPressed():
+             State.pausedLevel_1 = False
+        GravityGame_Buttons.__continueButton.showButton()
+             

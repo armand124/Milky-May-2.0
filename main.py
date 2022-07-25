@@ -14,7 +14,7 @@ game.init()
 def main():
     clock = game.time.Clock()
     while State.sessionStarted:
-      print(gravityTest.Player.current_X)
+      
       #Main Menu
       if screen.screenMenu is True:
         Menu.basicEvent()
@@ -38,3 +38,4 @@ def main():
     game.quit()
 
 main()
+ 
