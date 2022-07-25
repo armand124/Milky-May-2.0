@@ -45,6 +45,8 @@ mars = game.transform.scale(mars , (Screen.resizeMaterial_Width(State.currentWid
 pausedScreen = game.image.load(os.path.join(Path.gravity_game , 'pauseScreen.png')).convert_alpha()
 pausedSreen = game.transform.scale(pausedScreen,(State.currentWidth,State.currentHeight))
 
+formuleList = game.image.load(os.path.join(Path.gravity_game))
+
 class Player:
  #Default player position when game starts
  current_Y = State.currentHeight/2 
@@ -53,6 +55,32 @@ class Player:
  character = game.image.load(os.path.join(Path.gravity_game , 'ship.png')).convert_alpha()
  character = game.transform.scale(character,(Screen.resizeMaterial_Width(State.currentWidth,character.get_width()),Screen.resizeMaterial_Height(State.currentHeight,character.get_height())))
  
+ left = game.image.load(os.path.join(Path.gravity_game , 'shipLeft.png')).convert_alpha()
+ left = game.transform.scale(left , (Screen.resizeMaterial_Width(State.currentWidth , left .get_width()),Screen.resizeMaterial_Height(State.currentHeight,left.get_height())))
+ 
+ leftUp = game.image.load(os.path.join(Path.gravity_game , 'shipLeftUp.png')).convert_alpha()
+ leftUp = game.transform.scale(leftUp , (Screen.resizeMaterial_Width(State.currentWidth , left .get_width()),Screen.resizeMaterial_Height(State.currentHeight,left.get_height())))
+
+ leftDown = game.image.load(os.path.join(Path.gravity_game , 'shipLeftDown.png')).convert_alpha()
+ leftDown = game.transform.scale(leftDown , (Screen.resizeMaterial_Width(State.currentWidth , left .get_width()),Screen.resizeMaterial_Height(State.currentHeight,left.get_height())))
+
+ right = game.image.load(os.path.join(Path.gravity_game , 'shipRight.png')).convert_alpha()
+ right = game.transform.scale(right , (Screen.resizeMaterial_Width(State.currentWidth , left .get_width()),Screen.resizeMaterial_Height(State.currentHeight,left.get_height())))
+
+ rightDown = game.image.load(os.path.join(Path.gravity_game , 'shipRightDown.png')).convert_alpha()
+ rightDown = game.transform.scale(rightDown , (Screen.resizeMaterial_Width(State.currentWidth , left .get_width()),Screen.resizeMaterial_Height(State.currentHeight,left.get_height())))
+
+ rightUp = game.image.load(os.path.join(Path.gravity_game , 'shipRightUp.png')).convert_alpha()
+ rightUp = game.transform.scale(rightUp , (Screen.resizeMaterial_Width(State.currentWidth , left .get_width()),Screen.resizeMaterial_Height(State.currentHeight,left.get_height())))
+
+ up = game.image.load(os.path.join(Path.gravity_game , 'shipUp.png')).convert_alpha()
+ up = game.transform.scale(up , (Screen.resizeMaterial_Width(State.currentWidth , left .get_width()),Screen.resizeMaterial_Height(State.currentHeight,left.get_height())))
+
+ down = game.image.load(os.path.join(Path.gravity_game , 'shipDown.png')).convert_alpha()
+ down = game.transform.scale(down , (Screen.resizeMaterial_Width(State.currentWidth , left .get_width()),Screen.resizeMaterial_Height(State.currentHeight,left.get_height())))
+
+ 
+
  up_key = False
  down_key = False
  right_key = False
@@ -70,12 +98,24 @@ class Player:
  def movePlayer():
     if Player.up_key and Player.current_Y - Player.currentSpeed >= 0:
        Player.current_Y -= Player.currentSpeed
+       Player.character = Player.up
     if Player.down_key and Player.current_Y + Player.currentSpeed <= State.currentHeight-100:
        Player.current_Y += Player.currentSpeed
+       Player.character = Player.down
     if Player.right_key and Player.current_X + Player.currentSpeed <= State.currentWidth-100:
        Player.current_X += Player.currentSpeed
+       Player.character = Player.right
     if Player.left_key and Player.current_X - Player.currentSpeed >=0:
        Player.current_X -= Player.currentSpeed
+       Player.character = Player.left
+    if Player.up_key and Player.left_key:
+       Player.character = Player.leftUp
+    if Player.up_key and Player.right_key:
+       Player.character = Player.rightUp
+    if Player.down_key and Player.right_key:
+       Player.character = Player.rightDown
+    if Player.down_key and Player.left_key:
+       Player.character = Player.leftDown
 @staticmethod
 def basicEvents():
    for event in game.event.get():
