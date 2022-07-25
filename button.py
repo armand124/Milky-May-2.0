@@ -146,11 +146,26 @@ class GravityGame_Buttons:
      continue_P = picture.image.load(os.path.join(Path.gravity_game,'continuePressed.png')).convert_alpha()
      continue_Un = picture.image.load(os.path.join(Path.gravity_game,'continueUnpressed.png')).convert_alpha()
      
-     __continueButton = Button(ButtonConstant_X,Screen.resizeMaterial_Height(State.currentHeight,780)- 2*ButtonDifference_Y,continue_P,continue_Un)
+     __continueButton = Button(ButtonConstant_X,Screen.resizeMaterial_Height(State.currentHeight,900)- 3*ButtonDifference_Y,continue_P,continue_Un)
      
      @staticmethod
      def continueButton():
         if GravityGame_Buttons.__continueButton.buttonPressed():
              State.pausedLevel_1 = False
         GravityGame_Buttons.__continueButton.showButton()
-             
+        
+     #------------------------------------------------------------------------------------------------------------------
+     
+        
+     #-----------------------------------------Exit Button Declaration-----------------------------------------
+     exit_P = picture.image.load(os.path.join(Path.gravity_game,'backPressed.png')).convert_alpha()
+     exit_Un = picture.image.load(os.path.join(Path.gravity_game,'backUnpressed.png')).convert_alpha()
+     
+     __exitButton = Button(ButtonConstant_X,Screen.resizeMaterial_Height(State.currentHeight,900)- 2*ButtonDifference_Y,exit_P,exit_Un)
+     
+     @staticmethod
+     def exitButton():
+        if GravityGame_Buttons.__exitButton.buttonPressed():
+             Screen.idleMenu = False
+             Screen.screenMenu = True
+        GravityGame_Buttons.__exitButton.showButton()

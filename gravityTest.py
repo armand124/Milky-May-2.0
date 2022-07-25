@@ -76,6 +76,8 @@ def basicEvents():
    for event in game.event.get():
     if event.type == game.QUIT or State.sessionStarted == False:
                  sys.exit()
+    if event.type == picture.MOUSEBUTTONDOWN: 
+              State.mouseDown = True
     if event.type == game.KEYDOWN:
      if game.K_w == event.key or game.K_UP == event.key:
         Player.up_key = True
@@ -127,5 +129,6 @@ def updateGame():
   if State.pausedLevel_1:
      Screen.WIN.blit(pausedScreen,(0,0))
      GravityGame_Buttons.continueButton()
+     GravityGame_Buttons.exitButton()
   game.display.update()
    
