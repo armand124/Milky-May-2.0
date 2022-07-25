@@ -167,5 +167,23 @@ class GravityGame_Buttons:
      def exitButton():
         if GravityGame_Buttons.__exitButton.buttonPressed():
              Screen.idleMenu = False
+             State.pausedLevel_1 = False
              Screen.screenMenu = True
         GravityGame_Buttons.__exitButton.showButton()
+
+     #------------------------------------------------------------------------------------------------------------------
+
+
+     #-----------------------------------------Formula Button Declaration-----------------------------------------
+     
+     formula_P = picture.image.load(os.path.join(Path.gravity_game , 'formule.png')).convert_alpha()
+     formula_Un = picture.image.load(os.path.join(Path.gravity_game, 'formulePressed.png')).convert_alpha()
+
+     __formulaButton = Button(Screen.resizeMaterial_Width(State.currentWidth,1760),Screen.resizeMaterial_Height(State.currentHeight,850),formula_Un,formula_P)
+     @staticmethod
+     def formulaButton():
+        if GravityGame_Buttons.__formulaButton.buttonPressed():
+            State.formulaScreen_Level_1 = True
+        GravityGame_Buttons.__formulaButton.showButton()
+
+     #-------------------------------------------------------------------------------------------------------------

@@ -3,3 +3,4 @@ class Path:
     settings_Screen_Assets = "assets/screen/settings_screen"
     fonts = "assets/font"
     gravity_game = "assets/gravity_game"
+    idle = "assets/idle"

@@ -33,12 +33,16 @@ planets.append((planet_earth,info_earth))
 #Jupiter
 jupiter = game.image.load(os.path.join(Path.gravity_game , 'jupiter.png')).convert_alpha()
 jupiter = game.transform.scale(jupiter , (Screen.resizeMaterial_Width(State.currentWidth,jupiter.get_width()),Screen.resizeMaterial_Height(State.currentHeight,jupiter.get_height())))
-#planets.append(jupiter)
+#info_jupiter = game.image.load(os.path.join(Path.gravity_game , 'infoJupiter.png')).convert_alpha()
+#info_jupiter = game.transform.scale(info_jupiter , (Screen.resizeMaterial_Width(State.currentWidth,info_jupiter.get_width()),Screen.resizeMaterial_Height(State.currentHeight,info_jupiter.get_height())))
+#planets.append((jupiter,info_jupiter))
 
 #Mars
 mars = game.image.load(os.path.join(Path.gravity_game , 'mars.png')).convert_alpha()
 mars = game.transform.scale(mars , (Screen.resizeMaterial_Width(State.currentWidth,mars.get_width()),Screen.resizeMaterial_Height(State.currentHeight,mars.get_height())))
-#planets.append(mars)
+#info_mars = game.image.load(os.path.join(Path.gravity_game,'infoMars.png')).convert_alpha()
+#info_mars = game.transform.scale(info_mars , (Screen.resizeMaterial_Width(State.currentWidth,info_mars.get_width()),Screen.resizeMaterial_Height(State.currentHeight,info_mars.get_height())))
+#planets.append((mars , info_mars))
 
 pausedScreen = game.image.load(os.path.join(Path.gravity_game , 'pauseScreen.png')).convert_alpha()
 pausedSreen = game.transform.scale(pausedScreen,(State.currentWidth,State.currentHeight))
@@ -87,8 +91,10 @@ def basicEvents():
         Player.left_key = True
      if game.K_d == event.key or game.K_RIGHT == event.key:
         Player.right_key = True
-     if game.K_ESCAPE == event.key:
+     if game.K_ESCAPE == event.key and State.formulaScreen_Level_1 is False:
         State.pausedLevel_1 = not State.pausedLevel_1
+     if game.K_ESCAPE == event.key and State.pausedLevel_1 is False and State.formulaScreen_Level_1 is True:
+        State.formulaScreen_Level_1 = False
     if event.type == game.KEYUP:
      if game.K_w == event.key or game.K_UP == event.key:
         Player.up_key = False
@@ -121,7 +127,7 @@ class World_Generation():
 #Function that updates the whole game     
 def updateGame():
   Screen.WIN.blit(background,(0,0))
-  if State.pausedLevel_1 is False:
+  if State.pausedLevel_1 is False and State.formulaScreen_Level_1 is False:
    Player.movePlayer()
   World_Generation.blitRandom()
   World_Generation.checkCollision()
@@ -130,5 +136,8 @@ def updateGame():
      Screen.WIN.blit(pausedScreen,(0,0))
      GravityGame_Buttons.continueButton()
      GravityGame_Buttons.exitButton()
+  if State.formulaScreen_Level_1 is True:
+      Screen.WIN.blit(pausedScreen , (0,0))
+  GravityGame_Buttons.formulaButton()
   game.display.update()
    

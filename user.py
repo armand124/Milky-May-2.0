@@ -14,6 +14,7 @@ class State:
     user = json.loads(fileReader)
     currentVolume = user["volume"]
     pausedLevel_1 = False
+    formulaScreen_Level_1 = False
     currentWidth = user["width"]
     currentHeight = user["height"]
     __fullscreenStatus = user["Fullscreen"]
