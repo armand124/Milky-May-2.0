@@ -34,7 +34,7 @@ def main():
         gravityTest.Player.modifyVelocity()
         gravityTest.basicEvents()
         gravityTest.updateGame()
-
+        
       if State.mouseDown == True:
         State.mouseDown = False
       clock.tick()

@@ -4,3 +4,5 @@ class Path:
     fonts = "assets/font"
     gravity_game = "assets/gravity_game"
     idle = "assets/idle"
+    quiz = "assets/quiz"
+    
