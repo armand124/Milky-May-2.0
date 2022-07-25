@@ -166,9 +166,9 @@ class GravityGame_Buttons:
      @staticmethod
      def exitButton():
         if GravityGame_Buttons.__exitButton.buttonPressed():
-             Screen.idleMenu = False
+             Screen.idleMenu = True
              State.pausedLevel_1 = False
-             Screen.screenMenu = True
+             Screen.first_game = False
         GravityGame_Buttons.__exitButton.showButton()
 
      #------------------------------------------------------------------------------------------------------------------
@@ -187,3 +187,19 @@ class GravityGame_Buttons:
         GravityGame_Buttons.__formulaButton.showButton()
 
      #-------------------------------------------------------------------------------------------------------------
+
+
+
+class Idle_Buttons:
+
+    earth_icon_P = picture.image.load(os.path.join(Path.idle , 'earthPressed.png')).convert_alpha()
+    earth_icon_Un = picture.image.load(os.path.join(Path.idle , 'earth.png')).convert_alpha()
+
+    __earthIconButton = Button(Screen.resizeMaterial_Width(State.currentWidth,260),Screen.resizeMaterial_Height(State.currentHeight,300),earth_icon_P,earth_icon_Un)
+
+    @staticmethod
+    def gravityButton():
+        if Idle_Buttons.__earthIconButton.buttonPressed():
+            Screen.first_game = True
+            Screen.idleMenu = False
+        Idle_Buttons.__earthIconButton.showButton()

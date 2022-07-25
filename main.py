@@ -25,8 +25,12 @@ def main():
         Settings.basicEvents()
         Settings.updateSettingScreen()
       
-      #Gravity Game 
+      #Idle Men8
       if screen.idleMenu is True:
+        Idle.basicEvent()
+        Idle.idleScreen()
+      
+      if screen.first_game is True:
         gravityTest.Player.modifyVelocity()
         gravityTest.basicEvents()
         gravityTest.updateGame()

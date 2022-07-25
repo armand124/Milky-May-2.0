@@ -10,6 +10,8 @@ class Screen:
     screenMenu = True
     settingsMenu = False
     idleMenu = False
+    first_game = False 
+    
     WIN = game.display.set_mode((State.currentWidth,State.currentHeight))
     if State.fullscreen:
         WIN = game.display.set_mode((State.currentWidth,State.currentHeight),game.FULLSCREEN)

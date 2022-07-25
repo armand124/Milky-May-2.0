@@ -14,8 +14,6 @@ from gui import *
 background = game.image.load(os.path.join(Path.gravity_game,'background.png')).convert_alpha()
 background = game.transform.scale(background,(State.currentWidth,State.currentHeight))
 
-character = game.image.load(os.path.join(Path.gravity_game , 'ship.png')).convert_alpha()
-character = game.transform.scale(character,(Screen.resizeMaterial_Width(State.currentWidth,character.get_width()),Screen.resizeMaterial_Height(State.currentHeight,character.get_height())))
 
 
 
@@ -52,6 +50,9 @@ class Player:
  current_Y = State.currentHeight/2 
  current_X = State.currentWidth/2
 
+ character = game.image.load(os.path.join(Path.gravity_game , 'ship.png')).convert_alpha()
+ character = game.transform.scale(character,(Screen.resizeMaterial_Width(State.currentWidth,character.get_width()),Screen.resizeMaterial_Height(State.currentHeight,character.get_height())))
+ 
  up_key = False
  down_key = False
  right_key = False
@@ -104,7 +105,7 @@ def basicEvents():
         Player.left_key = False
      if game.K_d == event.key or game.K_RIGHT == event.key:
         Player.right_key = False
-   
+     
 
 class World_Generation():
    positions = [(140,170),(600,650),(900,155)]
@@ -131,7 +132,7 @@ def updateGame():
    Player.movePlayer()
   World_Generation.blitRandom()
   World_Generation.checkCollision()
-  Screen.WIN.blit(character,(Player.current_X,Player.current_Y))
+  Screen.WIN.blit(Player.character,(Player.current_X,Player.current_Y))
   if State.pausedLevel_1:
      Screen.WIN.blit(pausedScreen,(0,0))
      GravityGame_Buttons.continueButton()

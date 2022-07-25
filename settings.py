@@ -91,7 +91,7 @@ class Settings:
     def updateSettingScreen():
         Screen.WIN.blit(Settings.background,(0,0))
         Screen.WIN.blit(Settings.title,(State.currentWidth/2 - Screen.resizeMaterial_Width(State.currentWidth,270), Screen.resizeMaterial_Height(State.currentHeight,40)))
-        Sound.handleVolume()
+        Sound.handleVolume() 
         ScreenResolutionOptions.handleFullscreenButton()
         Sound.handleVolumeIcon()
         picture.display.update()
