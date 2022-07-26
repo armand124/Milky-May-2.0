@@ -44,6 +44,7 @@ class Game:
 
 class LessonGame:
     currentSlide = 0
+    
     def basicEvent():
      for event in picture.event.get():
             if event.type == picture.QUIT or State.sessionStarted == False:
@@ -73,6 +74,10 @@ class LessonGame:
 class QuizGame:
     currentSlide = 0
     score = 0
+    scoreText = picture.image.load(os.path.join(Path.quiz , 'scor.png')).convert_alpha()
+    scoreText = picture.transform.scale(scoreText , (Screen.resizeMaterial_Width(State.currentWidth,scoreText.get_width()),Screen.resizeMaterial_Height(State.currentHeight,scoreText.get_height())))
+    backgroundScore = picture.image.load(os.path.join(Path.quiz , 'backgroundScore.png')).convert_alpha()
+    backgroundScore = picture.transform.scale(backgroundScore , (Screen.resizeMaterial_Width(State.currentWidth,backgroundScore.get_width()),Screen.resizeMaterial_Height(State.currentHeight,backgroundScore.get_height())))
     def basicEvent():
      for event in picture.event.get():
             if event.type == picture.QUIT or State.sessionStarted == False:
@@ -88,7 +93,9 @@ class QuizGame:
         Screen.WIN.blit(background_2,(0,0))
         if QuizGame.currentSlide == 10:
             QuizButtons.finalButtonSlideQuestions()
-            gui.GUI.arraging_text(Screen.WIN,str(QuizGame.score),(600,600),Font.mainFont)
+            Screen.WIN.blit(QuizGame.backgroundScore,(910,430))
+            gui.GUI.arraging_text(Screen.WIN,str(QuizGame.score),(934,445),Font.scoreFont)
+            Screen.WIN.blit(QuizGame.scoreText,(810,325))
         else:
             Screen.WIN.blit(backgroundText,(0,0))
             askedQuestion , answear = questions[QuizGame.currentSlide]

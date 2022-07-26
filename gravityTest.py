@@ -40,6 +40,30 @@ info_mars = game.image.load(os.path.join(Path.gravity_game,'infoMars.png')).conv
 info_mars = game.transform.scale(info_mars , (Screen.resizeMaterial_Width(State.currentWidth,info_mars.get_width()),Screen.resizeMaterial_Height(State.currentHeight,info_mars.get_height())))
 planets.append((mars , info_mars))
 
+#Venus
+venus = game.image.load(os.path.join(Path.gravity_game , 'venus.png')).convert_alpha()
+venus = game.transform.scale(venus , (Screen.resizeMaterial_Width(State.currentWidth,venus.get_width()),Screen.resizeMaterial_Height(State.currentHeight,mars.get_height())))
+info_venus = game.image.load(os.path.join(Path.gravity_game,'infoVenus.png')).convert_alpha()
+info_venus = game.transform.scale(info_venus , (Screen.resizeMaterial_Width(State.currentWidth,info_mars.get_width()),Screen.resizeMaterial_Height(State.currentHeight,info_mars.get_height())))
+planets.append((venus , info_venus))
+
+
+#Mercury
+mercury = game.image.load(os.path.join(Path.gravity_game , 'mecury.png')).convert_alpha()
+mercury = game.transform.scale(mercury , (Screen.resizeMaterial_Width(State.currentWidth,venus.get_width()),Screen.resizeMaterial_Height(State.currentHeight,mars.get_height())))
+info_mercury = game.image.load(os.path.join(Path.gravity_game,'infoMercury.png')).convert_alpha()
+info_mercury = game.transform.scale(info_mercury , (Screen.resizeMaterial_Width(State.currentWidth,info_mars.get_width()),Screen.resizeMaterial_Height(State.currentHeight,info_mars.get_height())))
+planets.append((mercury , info_mercury))
+
+#Neptune
+neptune = game.image.load(os.path.join(Path.gravity_game , 'neptun.png')).convert_alpha()
+neptune = game.transform.scale(neptune , (Screen.resizeMaterial_Width(State.currentWidth,venus.get_width()),Screen.resizeMaterial_Height(State.currentHeight,mars.get_height())))
+info_neptune = game.image.load(os.path.join(Path.gravity_game,'infoNeptune.png')).convert_alpha()
+info_neptune = game.transform.scale(info_neptune , (Screen.resizeMaterial_Width(State.currentWidth,info_mars.get_width()),Screen.resizeMaterial_Height(State.currentHeight,info_mars.get_height())))
+planets.append((neptune , info_neptune))
+
+
+
 pausedScreen = game.image.load(os.path.join(Path.gravity_game , 'pauseScreen.png')).convert_alpha()
 pausedSreen = game.transform.scale(pausedScreen,(State.currentWidth,State.currentHeight))
 
@@ -147,7 +171,9 @@ def basicEvents():
      
 
 class World_Generation():
-   positions = [(140,170),(600,400),(900,155)]
+   positions = [(Screen.resizeMaterial_Width(State.currentWidth,140),Screen.resizeMaterial_Height(State.currentHeight,170)),
+                (Screen.resizeMaterial_Width(State.currentWidth,600),Screen.resizeMaterial_Height(State.currentHeight,400)),
+                (Screen.resizeMaterial_Width(State.currentWidth,1320),Screen.resizeMaterial_Height(State.currentHeight,155))]
    random.shuffle(planets)
    random.shuffle(positions)
    

@@ -249,7 +249,7 @@ class QuizButtons:
     finish_P = picture.image.load(os.path.join(Path.quiz , 'finalPressed.png')).convert_alpha()
     finish_Un = picture.image.load(os.path.join(Path.quiz , 'finalUnpressed.png')).convert_alpha()
 
-    __finishButton= Button(Screen.resizeMaterial_Width(State.currentWidth,800),Screen.resizeMaterial_Height(State.currentHeight,300),finish_P,finish_Un)
+    __finishButton= Button(Screen.resizeMaterial_Width(State.currentWidth,850),Screen.resizeMaterial_Height(State.currentHeight,700),finish_P,finish_Un)
 
     @staticmethod
     def finalButtonSlide():

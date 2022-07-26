@@ -46,4 +46,4 @@ class Font:
  picture.init()
  __fontAcre = os.path.join(Path.fonts,'acre.otf')
  mainFont = picture.font.Font(__fontAcre, 45)
- 
+ scoreFont = picture.font.Font(__fontAcre , 80)
