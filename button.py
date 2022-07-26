@@ -217,3 +217,44 @@ class Idle_Buttons:
             Screen.quizMenu = True
             Screen.idleMenu = False
         Idle_Buttons.__solarSystemIconButton.showButton()
+
+
+
+class QuizButtons:
+
+    lectie_P = picture.image.load(os.path.join(Path.quiz , 'lectiePressed.png')).convert_alpha()
+    lectie_Un = picture.image.load(os.path.join(Path.quiz, 'lectieUnpressed.png')).convert_alpha()
+
+    __lectieButton = Button(Screen.resizeMaterial_Width(State.currentWidth,200),Screen.resizeMaterial_Height(State.currentHeight,300),lectie_P,lectie_Un)
+
+    @staticmethod
+    def lessonButton():
+        if QuizButtons.__lectieButton.buttonPressed():
+            Screen.lessonMenu = True
+            Screen.quizMenu = False
+        QuizButtons.__lectieButton.showButton()
+
+    
+    quiz_P = picture.image.load(os.path.join(Path.quiz , 'evaluarePressed.png')).convert_alpha()
+    quiz_Un = picture.image.load(os.path.join(Path.quiz, 'evaluareUnpressed.png')).convert_alpha()
+
+    __quizButton= Button(Screen.resizeMaterial_Width(State.currentWidth,800),Screen.resizeMaterial_Height(State.currentHeight,300),quiz_P,quiz_Un)
+
+    @staticmethod
+    def askingButton():
+        if QuizButtons.__quizButton.buttonPressed():
+            Screen.askingMenu = True
+            Screen.quizMenu = False
+        QuizButtons.__quizButton.showButton()
+
+    finish_P = picture.image.load(os.path.join(Path.quiz , 'finalPressed.png')).convert_alpha()
+    finish_Un = picture.image.load(os.path.join(Path.quiz , 'finalUnpressed.png')).convert_alpha()
+
+    __finishButton= Button(Screen.resizeMaterial_Width(State.currentWidth,800),Screen.resizeMaterial_Height(State.currentHeight,300),finish_P,finish_Un)
+
+    @staticmethod
+    def finalButtonSlide():
+        if QuizButtons.__finishButton.buttonPressed():
+            Screen.lessonMenu = False
+            Screen.quizMenu = True
+        QuizButtons.__finishButton.showButton()

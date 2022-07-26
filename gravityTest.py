@@ -79,7 +79,7 @@ class Player:
  down = game.transform.scale(down , (Screen.resizeMaterial_Width(State.currentWidth , left .get_width()),Screen.resizeMaterial_Height(State.currentHeight,left.get_height())))
 
  
-
+ 
  up_key = False
  down_key = False
  right_key = False

@@ -9,8 +9,11 @@ class Screen:
     windowedConstant = 80
     screenMenu = True
     settingsMenu = False
+    askingMenu = False
     idleMenu = False
     quizMenu = False
+    idleQuizMenu = True
+    lessonMenu = False
     first_game = False 
     
     WIN = game.display.set_mode((State.currentWidth,State.currentHeight))

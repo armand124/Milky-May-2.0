@@ -26,7 +26,7 @@ def main():
         Settings.basicEvents()
         Settings.updateSettingScreen()
       
-      #Idle Men8
+      #Idle Menu
       if screen.idleMenu is True:
         Idle.basicEvent()
         Idle.idleScreen()
@@ -38,7 +38,11 @@ def main():
 
       if screen.quizMenu is True:
         Game.basicEvent()
-        Game.updateQuiz()
+        Game.beforeQuizScreen()
+      
+      if screen.lessonMenu is True:
+        LessonGame.basicEvent()
+        LessonGame.run()
 
       if State.mouseDown == True:
         State.mouseDown = False

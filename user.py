@@ -43,5 +43,5 @@ def Save():
 class Font:
  picture.init()
  __fontAcre = os.path.join(Path.fonts,'acre.otf')
- mainFont = picture.font.Font(__fontAcre, 100)
+ mainFont = picture.font.Font(__fontAcre, 45)
  
