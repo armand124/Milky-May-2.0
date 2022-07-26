@@ -1,5 +1,7 @@
 # Milky-May-2.0
 
+![My Image](assets/screen/starting_screen/Logo.png)
+
 Milky May este o aplicație de desktop dedicată elevilor din ciclul primar și gimnazial (Clasa a V-a). Scopul acestui soft educațional este să ofere o primire
 călduroasă în lumea cosmosului prin grafici atractive vârstei juvenile și prezentări interactive și palpitante.
 
@@ -13,4 +15,3 @@ Milky May a fost realizat în librăria PyGame, în limbajul de programare Pytho
 Cod + Grafică + Research - Miron Armand
 Grafică + Research - Bălășescu Andrei
 
-![My Image](assets/screen/starting_screen/Logo.png)
