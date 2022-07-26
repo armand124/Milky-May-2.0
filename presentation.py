@@ -16,11 +16,14 @@ background_2 = game.transform.scale(background_2 , (State.currentWidth,State.cur
 
 backgroundText = game.image.load(os.path.join(Path.quiz , 'backgroundText.png')).convert_alpha()
 
-facts = ['aoidjaojfoiawaaiogjaoighawuoifawuoifqwuoiahfioqwufjoiqwufjoaisgagoiaugaijgaioeugoatoaieut      atiawaaiogjaoighawuoifawuoifqwuoiahfioqwuiawaaiogjaoighawuoifawuoifqwuoiahfioqwuiawaaiogjaoighawuoifawuoifqwuoiahfioqwu','oiajw','aifhoahoifafj']
-questions = [('dasgagagagagag',True),('a',False),('d',True),('a',False),('f',False),('g',True),('f',False),('g',True),('g',False),('gg',True)]
+facts = ['Universul este totalitatea spațiului și timpului, a tuturor formelor de materie și energie.' , 'Dimensiunea întregului Univers nu este cunoscută.', 'Universul observabil poate fi măsurat și este estimat în prezent la 93 miliarde de ani-lumină în diametru.' , 'Numărul de galaxii estimat este de 2 trilioane' , 'Calea Lactee este galaxia din care face parte sistemul solar ' , 'În sistemul solar se află 8 planete : Mercur, Venus, Pământ, Marte, Jupiter, Saturn, Uranus și Neptun' , 'Între Marte și Jupiter se află Centura de asteroizi' , 'Pământul s-a format acum 4,54 miliarde de ani' ,' Pământul este a 3-a planetă față de Soare, dar este a 4-a cea mai mică planetă ca și mărime sau diametru' , 'Calea Lactee are formă de disc' , 'Calea Lactee are un diametru de 150000-200000 de ani lumină' , 'Galaxia Andromeda este cea mai apropiată galaxie de Calea Lactee']
+questions = [('Este cunoscută dimensiunea întregului Univers.',False),('Dimaetrul universului este de 93 de miliarde de ani-lumină.',True),
+('Numărul estimat de galaxii este de 10 trilioane.',False),('În prezent, în sistemul nostru solar există 8 planete.',True),
+('Între Marte și Jupiter se află Centura de Asteroizi',True),('Cele mai mari planete sunt Uranus și Jupiter.',False),
+('Pământul este a 3-a cea mai mică planetă.',False),('Pământul face o rotație completă în jurul soarelui în 365,25 de zile.',True),
+('Pământul a fost format acum 2 miliarde de ani.',False),('Galaxia Andromeda este cea mai apropiată de Calea Lactee.',True)]
 
 class Game:
-    
     def basicEvent():
      for event in picture.event.get():
             if event.type == picture.QUIT or State.sessionStarted == False:
@@ -93,9 +96,9 @@ class QuizGame:
         Screen.WIN.blit(background_2,(0,0))
         if QuizGame.currentSlide == 10:
             QuizButtons.finalButtonSlideQuestions()
-            Screen.WIN.blit(QuizGame.backgroundScore,(910,430))
-            gui.GUI.arraging_text(Screen.WIN,str(QuizGame.score),(934,445),Font.scoreFont)
-            Screen.WIN.blit(QuizGame.scoreText,(810,325))
+            Screen.WIN.blit(QuizGame.backgroundScore,(Screen.resizeMaterial_Width(State.currentWidth,910),Screen.resizeMaterial_Height(State.currentHeight,430)))
+            gui.GUI.arraging_text(Screen.WIN,str(QuizGame.score),(Screen.resizeMaterial_Width(State.currentWidth,934),Screen.resizeMaterial_Height(State.currentHeight,445),Font.scoreFont))
+            Screen.WIN.blit(QuizGame.scoreText,(Screen.resizeMaterial_Width(State.currentWidth,810),Screen.resizeMaterial_Height(State.currentHeight,325)))
         else:
             Screen.WIN.blit(backgroundText,(0,0))
             askedQuestion , answear = questions[QuizGame.currentSlide]
@@ -110,6 +113,4 @@ class QuizGame:
             
 
 
-            
-            
-
+        
