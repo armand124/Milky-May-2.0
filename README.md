@@ -12,6 +12,6 @@ fizice și astrologice.
 Milky May a fost realizat în librăria PyGame, în limbajul de programare Python.
 
 
-Cod + Grafică + Research - Miron Armand
+Cod + Grafică + Research - Miron Armand,
 Grafică + Research - Bălășescu Andrei
 
