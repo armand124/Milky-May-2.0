@@ -13,4 +13,4 @@ Milky May a fost realizat în librăria PyGame, în limbajul de programare Pytho
 Cod + Grafică + Research - Miron Armand
 Grafică + Research - Bălășescu Andrei
 
-![My Image](screenshots/zbor.png)
+![My Image](assets/screen/starting_screen/logo.png)
