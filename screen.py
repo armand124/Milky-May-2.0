@@ -12,11 +12,11 @@ class Screen:
     askingMenu = False
     idleMenu = False
     quizMenu = False
-    idleQuizMenu = True
     lessonMenu = False
     first_game = False 
     
     WIN = game.display.set_mode((State.currentWidth,State.currentHeight))
+
     if State.fullscreen:
         WIN = game.display.set_mode((State.currentWidth,State.currentHeight),game.FULLSCREEN)
     else:

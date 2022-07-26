@@ -29,16 +29,16 @@ planets.append((planet_earth,info_earth))
 #Jupiter
 jupiter = game.image.load(os.path.join(Path.gravity_game , 'jupiter.png')).convert_alpha()
 jupiter = game.transform.scale(jupiter , (Screen.resizeMaterial_Width(State.currentWidth,jupiter.get_width()),Screen.resizeMaterial_Height(State.currentHeight,jupiter.get_height())))
-#info_jupiter = game.image.load(os.path.join(Path.gravity_game , 'infoJupiter.png')).convert_alpha()
-#info_jupiter = game.transform.scale(info_jupiter , (Screen.resizeMaterial_Width(State.currentWidth,info_jupiter.get_width()),Screen.resizeMaterial_Height(State.currentHeight,info_jupiter.get_height())))
-#planets.append((jupiter,info_jupiter))
+info_jupiter = game.image.load(os.path.join(Path.gravity_game , 'infoJupiter.png')).convert_alpha()
+info_jupiter = game.transform.scale(info_jupiter , (Screen.resizeMaterial_Width(State.currentWidth,info_jupiter.get_width()),Screen.resizeMaterial_Height(State.currentHeight,info_jupiter.get_height())))
+planets.append((jupiter,info_jupiter))
 
 #Mars
 mars = game.image.load(os.path.join(Path.gravity_game , 'mars.png')).convert_alpha()
 mars = game.transform.scale(mars , (Screen.resizeMaterial_Width(State.currentWidth,mars.get_width()),Screen.resizeMaterial_Height(State.currentHeight,mars.get_height())))
-#info_mars = game.image.load(os.path.join(Path.gravity_game,'infoMars.png')).convert_alpha()
-#info_mars = game.transform.scale(info_mars , (Screen.resizeMaterial_Width(State.currentWidth,info_mars.get_width()),Screen.resizeMaterial_Height(State.currentHeight,info_mars.get_height())))
-#planets.append((mars , info_mars))
+info_mars = game.image.load(os.path.join(Path.gravity_game,'infoMars.png')).convert_alpha()
+info_mars = game.transform.scale(info_mars , (Screen.resizeMaterial_Width(State.currentWidth,info_mars.get_width()),Screen.resizeMaterial_Height(State.currentHeight,info_mars.get_height())))
+planets.append((mars , info_mars))
 
 pausedScreen = game.image.load(os.path.join(Path.gravity_game , 'pauseScreen.png')).convert_alpha()
 pausedSreen = game.transform.scale(pausedScreen,(State.currentWidth,State.currentHeight))
@@ -147,17 +147,17 @@ def basicEvents():
      
 
 class World_Generation():
-   positions = [(140,170),(600,650),(900,155)]
+   positions = [(140,170),(600,400),(900,155)]
    random.shuffle(planets)
    random.shuffle(positions)
    
    def blitRandom():
-      for i in range(0,1):
+      for i in range(0,3):
          imgPlanet , infoPlanet = planets[i]
          Screen.WIN.blit(imgPlanet, World_Generation.positions[i])
    
    def checkCollision():
-      for i in range(0,1):
+      for i in range(0,3):
          x,y = World_Generation.positions[i]
          imgPlan , infoPlanet = planets[i]
          if Player.current_X >= x and Player.current_X <= x+planet_earth.get_width() and Player.current_Y >= y and Player.current_Y <= y+planet_earth.get_height():

@@ -44,6 +44,10 @@ def main():
         LessonGame.basicEvent()
         LessonGame.run()
 
+      if screen.askingMenu is True:
+        QuizGame.basicEvent()
+        QuizGame.run()
+
       if State.mouseDown == True:
         State.mouseDown = False
       clock.tick()

@@ -1,9 +1,11 @@
 from turtle import back
 import pygame as game
 from Paths import *
+import random
 from button import *
 import gui
-from user import *
+from user import State
+from user import Font as fnt
 import sys
 background = game.image.load(os.path.join(Path.quiz , 'background.png')).convert_alpha()
 background = game.transform.scale(background , (State.currentWidth,State.currentHeight))
@@ -14,9 +16,8 @@ background_2 = game.transform.scale(background_2 , (State.currentWidth,State.cur
 
 backgroundText = game.image.load(os.path.join(Path.quiz , 'backgroundText.png')).convert_alpha()
 
-facts = ['aoidjaojfoiawaaiogjaoighawuoifawuoifqwuoiahfioqwufjoiqwufjoaisgagoiaugaijgaioeugoatoaieutatiawaaiogjaoighawuoifawuoifqwuoiahfioqwuiawaaiogjaoighawuoifawuoifqwuoiahfioqwuiawaaiogjaoighawuoifawuoifqwuoiahfioqwu','oiajw','aifhoahoifafj']
-questions = []
-questionsMode = []
+facts = ['aoidjaojfoiawaaiogjaoighawuoifawuoifqwuoiahfioqwufjoiqwufjoaisgagoiaugaijgaioeugoatoaieut      atiawaaiogjaoighawuoifawuoifqwuoiahfioqwuiawaaiogjaoighawuoifawuoifqwuoiahfioqwuiawaaiogjaoighawuoifawuoifqwuoiahfioqwu','oiajw','aifhoahoifafj']
+questions = [('dasgagagagagag',True),('a',False),('d',True),('a',False),('f',False),('g',True),('f',False),('g',True),('g',False),('gg',True)]
 
 class Game:
     
@@ -66,10 +67,12 @@ class LessonGame:
             QuizButtons.finalButtonSlide()
         else:
             Screen.WIN.blit(backgroundText,(0,0))
-            gui.GUI.arraging_text(600,Screen.WIN,facts[LessonGame.currentSlide],(20,20),Font.mainFont)
+            gui.GUI.arraging_text(Screen.WIN,facts[LessonGame.currentSlide],(30,30),fnt.mainFont)
         picture.display.update()
 
 class QuizGame:
+    currentSlide = 0
+    score = 0
     def basicEvent():
      for event in picture.event.get():
             if event.type == picture.QUIT or State.sessionStarted == False:
@@ -80,7 +83,26 @@ class QuizGame:
                 if event.key == game.K_ESCAPE:
                     Screen.askingMenu = False
                     Screen.quizMenu = True
+    random.shuffle(questions)    
+    def run():
+        Screen.WIN.blit(background_2,(0,0))
+        if QuizGame.currentSlide == 10:
+            QuizButtons.finalButtonSlideQuestions()
+            gui.GUI.arraging_text(Screen.WIN,str(QuizGame.score),(600,600),Font.mainFont)
+        else:
+            Screen.WIN.blit(backgroundText,(0,0))
+            askedQuestion , answear = questions[QuizGame.currentSlide]
+            gui.GUI.arraging_text(Screen.WIN,askedQuestion,(20,20),Font.mainFont)
+            if State.pressedDecision:
+                if State.answearYet == answear:
+                    QuizGame.score+=1
+                State.pressedDecision = False
+                QuizGame.currentSlide+=1
+            QuizButtons.resultfromAnwear()
+        picture.display.update()
+            
 
-    
 
+            
+            
 

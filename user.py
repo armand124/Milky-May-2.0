@@ -6,6 +6,7 @@ import pygame as picture
 class State:
     sessionStarted = True
     mouseDown = False
+    pressedDecision = False
     current_FPS = 0
     collideWithObject = False
     f = open(os.path.join(Path.settings_Screen_Assets,'settings.json'),'r')
@@ -18,6 +19,7 @@ class State:
     currentWidth = user["width"]
     currentHeight = user["height"]
     __fullscreenStatus = user["Fullscreen"]
+    answearYet = False
     fullscreen = False
     if __fullscreenStatus == 1:
         fullscreen = True

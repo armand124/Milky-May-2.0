@@ -183,7 +183,7 @@ class GravityGame_Buttons:
      @staticmethod
      def formulaButton():
         if GravityGame_Buttons.__formulaButton.buttonPressed():
-            State.formulaScreen_Level_1 = True
+            State.formulaScreen_Level_1 = not State.formulaScreen_Level_1
         GravityGame_Buttons.__formulaButton.showButton()
 
      #-------------------------------------------------------------------------------------------------------------
@@ -195,7 +195,7 @@ class Idle_Buttons:
     earth_icon_P = picture.image.load(os.path.join(Path.idle , 'earthPressed.png')).convert_alpha()
     earth_icon_Un = picture.image.load(os.path.join(Path.idle , 'earth.png')).convert_alpha()
 
-    __earthIconButton = Button(Screen.resizeMaterial_Width(State.currentWidth,260),Screen.resizeMaterial_Height(State.currentHeight,300),earth_icon_P,earth_icon_Un)
+    __earthIconButton = Button(Screen.resizeMaterial_Width(State.currentWidth,260),Screen.resizeMaterial_Height(State.currentHeight,450),earth_icon_P,earth_icon_Un)
 
     @staticmethod
     def gravityButton():
@@ -204,12 +204,11 @@ class Idle_Buttons:
             Screen.idleMenu = False
         Idle_Buttons.__earthIconButton.showButton()
 
-
     
     solarSystem_P = picture.image.load(os.path.join(Path.quiz, 'solarSystemPressed.png')).convert_alpha()
     solarSystem_Un = picture.image.load(os.path.join(Path.quiz , 'solarSystem.png')).convert_alpha()
 
-    __solarSystemIconButton = Button(Screen.resizeMaterial_Width(State.currentWidth,880),Screen.resizeMaterial_Height(State.currentHeight,300),solarSystem_P,solarSystem_Un)
+    __solarSystemIconButton = Button(Screen.resizeMaterial_Width(State.currentWidth,1250),Screen.resizeMaterial_Height(State.currentHeight,250),solarSystem_P,solarSystem_Un)
 
     @staticmethod
     def solarSystemButton():
@@ -225,7 +224,7 @@ class QuizButtons:
     lectie_P = picture.image.load(os.path.join(Path.quiz , 'lectiePressed.png')).convert_alpha()
     lectie_Un = picture.image.load(os.path.join(Path.quiz, 'lectieUnpressed.png')).convert_alpha()
 
-    __lectieButton = Button(Screen.resizeMaterial_Width(State.currentWidth,200),Screen.resizeMaterial_Height(State.currentHeight,300),lectie_P,lectie_Un)
+    __lectieButton = Button(Screen.resizeMaterial_Width(State.currentWidth,500),Screen.resizeMaterial_Height(State.currentHeight,500),lectie_P,lectie_Un)
 
     @staticmethod
     def lessonButton():
@@ -238,7 +237,7 @@ class QuizButtons:
     quiz_P = picture.image.load(os.path.join(Path.quiz , 'evaluarePressed.png')).convert_alpha()
     quiz_Un = picture.image.load(os.path.join(Path.quiz, 'evaluareUnpressed.png')).convert_alpha()
 
-    __quizButton= Button(Screen.resizeMaterial_Width(State.currentWidth,800),Screen.resizeMaterial_Height(State.currentHeight,300),quiz_P,quiz_Un)
+    __quizButton= Button(Screen.resizeMaterial_Width(State.currentWidth,1120),Screen.resizeMaterial_Height(State.currentHeight,500),quiz_P,quiz_Un)
 
     @staticmethod
     def askingButton():
@@ -258,3 +257,33 @@ class QuizButtons:
             Screen.lessonMenu = False
             Screen.quizMenu = True
         QuizButtons.__finishButton.showButton()
+
+
+    @staticmethod
+    def finalButtonSlideQuestions():
+        if QuizButtons.__finishButton.buttonPressed():
+            Screen.askingMenu = False
+            Screen.quizMenu = True
+        QuizButtons.__finishButton.showButton()
+
+    
+    truth_P = picture.image.load(os.path.join(Path.quiz , 'truePressed.png')).convert_alpha()
+    truth_Un = picture.image.load(os.path.join(Path.quiz ,  'trueUnpressed.png')).convert_alpha()
+
+    false_P = picture.image.load(os.path.join(Path.quiz , 'falsePressed.png')).convert_alpha()
+    false_Un = picture.image.load(os.path.join(Path.quiz,'falseUnpressed.png')).convert_alpha()
+
+    __truthButton = Button(Screen.resizeMaterial_Width(State.currentWidth,1020),Screen.resizeMaterial_Height(State.currentHeight,800),truth_P,truth_Un)
+    __falseButton = Button(Screen.resizeMaterial_Width(State.currentWidth,600),Screen.resizeMaterial_Height(State.currentHeight,800),false_P,false_Un)
+
+    @staticmethod
+    def resultfromAnwear():
+        if QuizButtons.__truthButton.buttonPressed():
+            State.answearYet = True
+            State.pressedDecision = True
+        elif QuizButtons.__falseButton.buttonPressed():
+            State.answearYet = False
+            State.pressedDecision = True
+        QuizButtons.__truthButton.showButton()
+        QuizButtons.__falseButton.showButton()
+        
